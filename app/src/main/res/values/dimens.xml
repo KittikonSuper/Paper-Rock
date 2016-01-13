@@ -5,4 +5,5 @@
     
     
     <dimen name="h1">35sp</dimen>
+    <dimen name="hight">120dp</dimen>
 </resources>
