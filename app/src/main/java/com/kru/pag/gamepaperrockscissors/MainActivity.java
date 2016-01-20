@@ -2,6 +2,8 @@ package com.kru.pag.gamepaperrockscissors;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +24,52 @@ public class MainActivity extends AppCompatActivity {
 
         // Bind widget
         bindwidget();
+
+        //Paper Controller
+        paperController();
+        //Rock Controller
+        rockController();
+        //ScissorController
+        scissorController();
     }// Main Metthod
+
+    private void scissorController() {
+        scissorImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePlay(3);
+            }
+        });
+    }
+
+    private void rockController() {
+        rockImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changePlay(2);
+            }
+        });
+    }
+
+    private void paperController() {
+
+        paperImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int intNumber = 1;
+                changePlay(intNumber);
+
+            }
+        });
+
+    } // paperController
+
+    private void changePlay(int intNumber) {
+
+        Log.d("test","ค่าที่รับได้ = " + intNumber);
+    }// changePlay
+
 
     private void bindwidget() {
         paperImageView = (ImageView) findViewById(R.id.imvPaper);
