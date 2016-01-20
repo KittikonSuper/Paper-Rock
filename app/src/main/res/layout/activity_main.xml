@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/head"
-        android:id="@+id/textView"
         android:textSize="@dimen/h1"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/txtShow" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -26,21 +26,21 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
+            android:id="@+id/imvPaper"
             android:layout_weight="1"
             android:src="@drawable/paper" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView2"
+            android:id="@+id/imvRock"
             android:layout_weight="1"
             android:src="@drawable/rock" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView3"
+            android:id="@+id/imvScissors"
             android:layout_weight="1"
             android:src="@drawable/scissors" />
     </LinearLayout>
@@ -54,7 +54,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView4"
+            android:id="@+id/imvPlayer"
             android:layout_weight="1" />
 
         <ImageView
@@ -67,7 +67,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView6"
+            android:id="@+id/imvAndroid"
             android:layout_weight="1" />
     </LinearLayout>
 
