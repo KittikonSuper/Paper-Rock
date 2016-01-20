@@ -34,4 +34,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-} // Main Class นี่คือคลาสหลัก
+} // Main Class นี่คือคลาสหลักก
