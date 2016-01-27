@@ -101,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
         String strLost = "เสียใจด้วย คุณแพ้";
         String strDew = "เอาใหม่ คุณเสมอ";
         String strShow = null;
+        int[] intSound = new int[3];
+        intSound[0] = R.raw.cat;
 
         //1 ==> กระดาษ, 2 ==> ค้อน , 3 ==> กรรไกร
         switch (intUser) {
