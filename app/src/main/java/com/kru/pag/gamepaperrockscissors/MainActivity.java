@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -59,12 +61,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int intNumber = 1;
+                myRandomPicture();
                 changePlay(intNumber);
 
             }
         });
 
     } // paperController
+
+    private void myRandomPicture() {
+
+        int intMyRandom = 0;
+        Random objRandom = new Random();
+        intMyRandom = objRandom.nextInt(3) + 1;
+        Log.d("Ran", "intRandom==>" + intMyRandom);
+    }//myRandomPicture
 
     private void changePlay(int intNumber) {
 
@@ -73,15 +84,15 @@ public class MainActivity extends AppCompatActivity {
         switch (intNumber) {
             case 1:
                 playImageViwe.setImageResource(R.drawable.paper);
-                intSound = R.raw.k2;
+                intSound = R.raw.mosquito;
                 break;
             case 2:
                 playImageViwe.setImageResource(R.drawable.rock);
-                intSound = R.raw.k1;
+                intSound = R.raw.cat;
                 break;
             case 3:
                 playImageViwe.setImageResource(R.drawable.scissors);
-                intSound = R.raw.k3;
+                intSound = R.raw.elephant;
                 break;
         }// switch
         MediaPlayer imageMediaPlayer = MediaPlayer.create(getBaseContext(), intSound);
