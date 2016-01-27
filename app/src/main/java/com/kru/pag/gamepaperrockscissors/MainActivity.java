@@ -1,12 +1,17 @@
 package com.kru.pag.gamepaperrockscissors;
 
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.Random;
 
@@ -17,7 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView paperImageView, rockImageView,
             scissorImageView, playImageViwe, androidImageView;
     private TextView showtextView;
-
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
@@ -34,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
         rockController();
         //ScissorController
         scissorController();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }// Main Metthod
 
     private void scissorController() {
@@ -41,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 changePlay(3);
+                myRandomPicture();
             }
         });
     }
@@ -51,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 changePlay(2);
+                myRandomPicture();
             }
         });
     }
@@ -64,22 +78,33 @@ public class MainActivity extends AppCompatActivity {
                 myRandomPicture();
                 changePlay(intNumber);
 
+
             }
         });
 
     } // paperController
-
     private void myRandomPicture() {
 
         int intMyRandom = 0;
         Random objRandom = new Random();
         intMyRandom = objRandom.nextInt(3) + 1;
         Log.d("Ran", "intRandom==>" + intMyRandom);
+        androidChange(intMyRandom);
     }//myRandomPicture
+
+    private void androidChange(int intMyRandom) {
+        int[] intSourceImage = new int[4];
+        intSourceImage[0] = 0;
+        intSourceImage[1] = R.drawable.paper;
+        intSourceImage[2] = R.drawable.rock;
+        intSourceImage[3] = R.drawable.scissors;
+
+        androidImageView.setImageResource(intSourceImage[intMyRandom]);
+    }//androidChange
 
     private void changePlay(int intNumber) {
 
-        Log.d("test","ค่าที่รับได้ = " + intNumber);
+        Log.d("test", "ค่าที่รับได้ = " + intNumber);
         int intSound = R.raw.mosquito;
         switch (intNumber) {
             case 1:
@@ -100,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
     }// changePlay
 
 
-
     private void bindwidget() {
         paperImageView = (ImageView) findViewById(R.id.imvPaper);
         rockImageView = (ImageView) findViewById(R.id.imvRock);
@@ -110,5 +134,45 @@ public class MainActivity extends AppCompatActivity {
         showtextView = (TextView) findViewById(R.id.txtShow);
 
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.kru.pag.gamepaperrockscissors/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.kru.pag.gamepaperrockscissors/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
     }
 } // Main Class นี่คือคลาสหลักก
